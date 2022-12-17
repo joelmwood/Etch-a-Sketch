@@ -15,7 +15,6 @@ html {
     display: inline-block;
 }
 
-
 .gridContainer {
     display: inline-grid;
     grid-template-columns: repeat(16, 2fr);
@@ -26,5 +25,9 @@ html {
     border-radius: 5px;
     margin-top: 20px;
     margin-right: 45px;
+}
+
+.square {
     background-color: white;
+    border: 1px solid black;
 }
