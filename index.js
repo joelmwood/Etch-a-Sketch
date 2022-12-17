@@ -5,6 +5,7 @@ let color = "white";
 createGrid = () => {
   for (let i = 0; i < 256; i++) {
     const divElement = document.createElement("div");
+    divElement.style.backgroundColor = "white";
     divElement.classList.add("square");
     divElement.addEventListener('mouseover', changeColor)
     grid.appendChild(divElement);
@@ -12,7 +13,15 @@ createGrid = () => {
 };
 
 function changeColor(e){
-  e.target.style.backgroundColor = "grey";
+  // let test = e.target.style.backgroundColor;
+  // console.log(test);
+  // e.target.style.backgroundColor = "grey";
+
+  if(e.target.style.backgroundColor == "white"){
+    e.target.style.backgroundColor = "grey";
+  }else{
+  e.target.style.backgroundColor = "black";
+  }
 }
 
 
