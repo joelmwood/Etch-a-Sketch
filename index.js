@@ -1,27 +1,31 @@
 const grid = document.querySelector(".gridContainer");
 const resetButton = document.querySelector(".reset");
 let color = "white";
+let mouseDown = false;
+document.body.onmousedown = () => (mouseDown = true);
+document.body.onmouseup = () => (mouseDown = false);
+
 
 createGrid = () => {
   for (let i = 0; i < 256; i++) {
     const divElement = document.createElement("div");
     divElement.style.backgroundColor = "white";
     divElement.classList.add("square");
-    divElement.addEventListener('mouseover', changeColor)
+    divElement.addEventListener('mouseover', changeColor);
+    divElement.addEventListener('mousedown', changeColor);
     grid.appendChild(divElement);
   }
 };
 
 function changeColor(e){
-  // let test = e.target.style.backgroundColor;
-  // console.log(test);
-  // e.target.style.backgroundColor = "grey";
-
-  if(e.target.style.backgroundColor == "white"){
-    e.target.style.backgroundColor = "grey";
-  }else{
-  e.target.style.backgroundColor = "black";
-  }
+  if(mouseDown){
+    if(e.target.style.backgroundColor == "white"){
+      e.target.style.backgroundColor = "grey";
+    }else{
+      e.target.style.backgroundColor = "black";
+    }
+  }  
+    
 }
 
 
