@@ -49,3 +49,9 @@ input[type=number] {
     background-color: black;
     border: 1px solid black;
 }
+
+.activeButton {
+    color: white;
+    background-color: black;
+    transform: scale(1.25);
+}

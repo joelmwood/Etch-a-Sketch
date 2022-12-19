@@ -11,12 +11,19 @@ const sizeSlider = document.getElementById("sizeSlider");
 sizeSlider.onmousemove = (e) => updateSizeValue(e.target.value);
 sizeSlider.onchange = (e) => changeSize(e.target.value);
 
+blackButton.onclick = () => activateButton('black');
+rainbowButton.onclick = () => activateButton('rainbow');
+eraserButton.onclick = () => activateButton('eraser');
+
 
 const DEFAULT_SIZE = 16;
 let currentSize = DEFAULT_SIZE;
 
-const DEFAULT_COLOR = "black";
-let currentColorMode = DEFAULT_COLOR;
+const DEFAULT_COLOR_MODE = "black";
+let currentColorMode = DEFAULT_COLOR_MODE;
+
+// const DEFAULT_MODE = 'black';
+// let currentMode = DEFAULT_MODE;
 
 
 let mouseDown = false;
@@ -69,24 +76,42 @@ function changeColor(e){
   }
 }
 
+function activateButton(newMode){
+  if (currentColorMode === 'black'){
+    blackButton.classList.remove("activeButton");
+  }else if (currentColorMode === 'rainbow'){
+    rainbowButton.classList.remove("activeButton");
+  }else if (currentColorMode === 'eraser'){
+    eraserButton.classList.remove("activeButton");
+  }
 
-resetButton.addEventListener("click", function() {
-  grid.innerHTML = "";
-  grid.style.setProperty("grid-template-columns", `repeat(16, 2fr)`);
-  grid.style.setProperty("grid-template-rows", `repeat(16, 2fr)`);
-  createGrid(currentSize);
-});
+  if (newMode === 'black'){
+    blackButton.classList.add("activeButton");
+  }else if(newMode === 'rainbow'){
+    rainbowButton.classList.add("activeButton");
+  }else if(newMode === 'eraser'){
+    eraserButton.classList.add("activeButton");
+  }
+}
 
 blackButton.addEventListener("click", function() {
-  currentColorMode = DEFAULT_COLOR;
+  currentColorMode = 'black';
+});
+
+rainbowButton.addEventListener("click", function() {
+  currentColorMode = "rainbow";
 });
 
 eraserButton.addEventListener("click", function(){
   currentColorMode = "eraser";
 });
 
-rainbowButton.addEventListener("click", function() {
-  currentColorMode = "rainbow";
+
+resetButton.addEventListener("click", function() {
+  grid.innerHTML = "";
+  grid.style.setProperty("grid-template-columns", `repeat(16, 2fr)`);
+  grid.style.setProperty("grid-template-rows", `repeat(16, 2fr)`);
+  createGrid(currentSize);
 });
 
 window.onload = () => {
