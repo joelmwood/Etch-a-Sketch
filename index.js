@@ -4,6 +4,7 @@ const grid = document.querySelector(".gridContainer");
 const resetButton = document.querySelector(".reset");
 const blackButton = document.querySelector(".black");
 const rainbowButton = document.querySelector(".rainbow");
+const eraserButton = document.querySelector(".eraser");
 
 const sizeValue = document.getElementById("sizeValue");
 const sizeSlider = document.getElementById("sizeSlider");
@@ -63,6 +64,8 @@ function changeColor(e){
     e.target.style.backgroundColor = `rgb(${randomR}, ${randomG},${randomB})`
   } else if (currentColorMode === `black`){
     e.target.style.backgroundColor = "black";
+  } else if(currentColorMode === 'eraser'){
+    e.target.style.backgroundColor = 'white';
   }
 }
 
@@ -76,6 +79,10 @@ resetButton.addEventListener("click", function() {
 
 blackButton.addEventListener("click", function() {
   currentColorMode = DEFAULT_COLOR;
+});
+
+eraserButton.addEventListener("click", function(){
+  currentColorMode = "eraser";
 });
 
 rainbowButton.addEventListener("click", function() {
